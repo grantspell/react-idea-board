@@ -1,13 +1,39 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+
+import NewLogInForm from './NewLogInForm'
+
 
 class LogInPage extends Component {
-    render() {
-        return (
-            <div>
-                <h1>WELCOME TO THE LOG IN PAGE</h1>
-            </div>
-        );
+  state = {
+    users: []
+  }
+
+    componentWillMount = () => {
+        this.getAllUsers()
     }
+
+    getAllUsers = async () => {
+        const res = await axios.get('/api/users')
+        this.setState({ users: res.data })
+    }
+
+  render () {
+
+    return (
+      <div>
+        <h1>Log-In</h1>
+        <h3>Please Select an Existing User</h3>
+        {this.state.users.map(user => {
+          return (<Link key={user._id} to={`/idea/${user._id}`}>{user.userName}</Link>)
+        })}
+        <div>
+            <NewLogInForm />
+        </div>
+      </div>
+    )
+  }
 }
 
-export default LogInPage;
+export default LogInPage

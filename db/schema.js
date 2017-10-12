@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const IdeaSchema = new Schema({
     title: {
         type: String,
-        required: true,
         default: "New Title"
     },
     description: {
@@ -22,11 +21,9 @@ const IdeaSchema = new Schema({
 const UserSchema = new Schema({
     userName: {
         type: String,
-        required: true
     },
     password: {
         type: String,
-        required: true
     },
     ideas: [IdeaSchema]
 });

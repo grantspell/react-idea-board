@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import HomePage from './components/home/HomePage'
-import IdeaPage from './components/idea/IdeaPage'
 import LogInPage from './components/login/LogInPage'
+import IdeaPage from './components/idea/IdeaPage'
 
 
 class App extends Component {
@@ -24,8 +24,8 @@ class App extends Component {
             </div>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/idea" component={IdeaPage} />
               <Route exact path="/login" component={LogInPage} />
+              <Route exact path="/idea/:userId" component={IdeaPage} />
             </Switch>
           </div>
       </Router>
